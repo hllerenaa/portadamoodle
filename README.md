@@ -17,6 +17,19 @@ Este servicio web proporciona una interfaz para actualizar la imagen de portada 
 ![Ejemplo de Portada Actualizada](https://integrasoluc.net/media/moodle_1.png)
 
 
+## Compilar el paquete instalable
+
+```bash
+python build.py                    # genera dist/ con la versión actual
+python build.py --bump             # incrementa $plugin->version (YYYYMMDDXX) antes de empaquetar
+python build.py --release 1.0.2    # cambia $plugin->release
+```
+
+Se genera `dist/local_actualizarportada_<release>.zip` (p.ej. `..._1.0.2.zip`), que se
+sube en **Administración del sitio > Extensiones > Instalar extensiones**. Si se compila el mismo release se reemplaza; los releases anteriores se
+conservan. Al publicar un release nuevo usa `--bump --release X.Y.Z` para que Moodle detecte
+la actualización. La carpeta `dist/` está excluida de git.
+
 ## Instalación
 
 Para instalar el servicio web de actualización de portada en tu instalación de Moodle:
